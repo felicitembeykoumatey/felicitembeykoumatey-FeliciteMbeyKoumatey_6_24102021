@@ -6,4 +6,4 @@ const sauceSchema = mongoose.Schema({
   userId: { type: String, required: true },
   price: { type: number, required: true },
 });
-module.experts = mongoose.model("Thing", sauceSchema);
+module.experts = mongoose.model("Sauce", sauceSchema);
