@@ -1,8 +1,11 @@
 require("dotenv").config();
+const express = require("express");
+const app = express();
+
 app.use("/api/stuff", stuffRoutes);
 /**déclaration constances */
 const bodyParser = require("body-parser");
-const Thing = require("./models/thing");
+const Thing = require("./models/Sauce");
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -63,11 +66,11 @@ const mongoose = require("mongoose");
 mongoose
   .connect(
     `
-    mongodb+srv://felicite_mbeykoumatey21:Mbeyfeli1990@cluster0.qbnko.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+    mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.qbnko.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("Connexion à MongoDB réussie !"))
-  .catch(() => console.log("Connexion à MongoDB échouée !"));
+  .catch(() => console.log("Oups, connexion à MongoDB échouée !"));
 
 const app = express();
 app.use(helmet());
