@@ -1,6 +1,11 @@
 /**déclaration constances */
 //ajout Express
 const express = require("express");
+
+const app = express();
+
+module.exports = app;
+
 const morgan = require("morgan");
 require("./database/databaseConfig");
 
