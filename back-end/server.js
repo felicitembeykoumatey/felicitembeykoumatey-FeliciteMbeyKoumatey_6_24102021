@@ -1,6 +1,13 @@
-/**Déclaration const */
 const http = require("http");
-const app = require("./app");
+
+const server = http.createServer((req, res) => {
+  res.end("Voilà la réponse du serveur !");
+});
+
+server.listen(process.env.PORT || 3000);
+/**Déclaration const 
+const http = require("http");
+const app = require("../back-end/app");
 const dotenv = require("dotenv");
 const result = dotenv.config();
 const cors = require("cors");
@@ -17,3 +24,4 @@ const server = http.createServer(app);
 server.listen(process.env.PORT || 3000, () =>
   console.log(`Serveur ouvert sur le bon port : ${process.env.PORT}`)
 );
+*/
