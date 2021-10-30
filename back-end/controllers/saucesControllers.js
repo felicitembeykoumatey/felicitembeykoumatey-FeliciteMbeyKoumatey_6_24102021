@@ -9,6 +9,9 @@ exports.createSauce = (req, res, next) => {
   const sauce = new Sauce({
     ...sauceData,
     name: xss(sauceData.name),
+    manufacturer: xss(sauceData.manufacturer),
+    description: xss(sauceData.description),
+    mainPepper: xss(sauceData.mainPepper),
     imageUrl: `${req.protocol}://${req.get("host")}/images/${
       req.file.filename
     }`,
