@@ -20,8 +20,6 @@ passwordSchema
   .spaces() // Should not have spaces
   .is()
   .not()
-  .oneOf(["Passw0rd", "Password123"]); // Blacklist these values
-console.log("---> CONTENU passwordSchema");
-console.log(passwordSchema);
+  .oneOf(["Passw0rd", "Password123"]);
 
 // Vérification de la qualité du mot de p asse par rapport au schéma
