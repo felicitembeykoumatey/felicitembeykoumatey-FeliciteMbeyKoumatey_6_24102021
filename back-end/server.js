@@ -4,11 +4,11 @@ const http = require("http");
 const app = require("./app");
 
 // Parametrage du port avec la méthode set de Expresss
-app.set("port", 8081);
+app.set("port", 3000);
 //Méthode createServer() prend en argument
 // Fonction qui sera appelé à chaque requete reçu par le serveur
 // Fonctions seront dans app.js
 
 const server = http.createServer(app);
 // le serveur écoute les requetes sur le port
-server.listen(8081);
+server.listen(3000);
