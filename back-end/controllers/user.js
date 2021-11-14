@@ -1,6 +1,9 @@
 const bcrypt = require("bcrypt");
 //Importation Json Web Token
 const jwt = require("jsonwebtoken");
+
+//Importation maskData
+const maskData = require("maskdata");
 //Importation user model
 const User = require("../models/userModel");
 
@@ -10,7 +13,7 @@ exports.signup = (req, res, next) => {
     .hash(req.body.password, 10)
     .then((hash) => {
       const user = new User({
-        email: req.body.email,
+        email: maskData.maskEmail(req.body.email),
         password: hash,
       });
       user
@@ -35,7 +38,7 @@ exports.signup = (req, res, next) => {
 
 // Exportation de la fonction login (se connecter)
 exports.login = (req, res, next) => {
-  User.findOne({ email: req.body.email })
+  User.findOne({ email: maskData.maskEmail(req.body.email) })
     .then((user) => {
       if (!user) {
         return res.status(401).json({ error: "Utilisateur non trouvé !" });
