@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+//Importation Json Web Token
 
 const User = require("../models/userModel");
 
@@ -18,8 +19,7 @@ exports.signup = (req, res, next) => {
           })
         )
         .catch((error) =>
-          res.status(400).json({
-            error,
+          res.status(400).json({ message: « Le mot de passe ne respecte pas les conditions requises »       error,
           })
         );
     })

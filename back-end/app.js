@@ -1,19 +1,22 @@
 // Importation de express
 const express = require("express");
 
-//
 const path = require("path");
 // importation des routes
 
 const userRoutes = require("./routes/userRoutes");
+const sauceRoutes = require("./routes/sauceRoutes");
 // Importation de morgan (logger http)
 const morgan = require("morgan");
+const helmet = require("helmet");
 
 // Importation connexion mongoose (le code qui me permet de connecter ma base des données au back-end)
 const mongoose = require("./db/db");
 
 // Pour créer une application express
 const app = express();
+
+app.use(helmet());
 //logger les requests et les responses
 app.use(morgan("dev"));
 
@@ -33,7 +36,6 @@ app.use((req, res, next) => {
     "GET, POST, PUT, DELETE, PATCH, OPTIONS"
   );
 
-  console.log("requête reçue");
   next();
 });
 
