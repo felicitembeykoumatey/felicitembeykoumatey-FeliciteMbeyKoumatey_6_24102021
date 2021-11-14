@@ -1,8 +1,10 @@
 const bcrypt = require("bcrypt");
 //Importation Json Web Token
-
+const jwt = require("jsonwebtoken");
+//Importation user model
 const User = require("../models/userModel");
 
+// Exportation de la fonction sign up (s'inscrire)
 exports.signup = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10)
@@ -19,7 +21,8 @@ exports.signup = (req, res, next) => {
           })
         )
         .catch((error) =>
-          res.status(400).json({ message: « Le mot de passe ne respecte pas les conditions requises »       error,
+          res.status(400).json({
+            message: "Le mot de passe ne respecte pas les conditions requises",
           })
         );
     })
@@ -29,6 +32,8 @@ exports.signup = (req, res, next) => {
       })
     );
 };
+
+// Exportation de la fonction login (se connecter)
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
