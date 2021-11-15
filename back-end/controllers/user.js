@@ -7,13 +7,14 @@ const maskData = require("maskdata");
 //Importation user model
 const User = require("../models/userModel");
 
-// Exportation de la fonction sign up (s'inscrire)
+// Exportation de la fonction sign up (s'inscrire) et ajouter marquage masqué les données
+//maskData
 exports.signup = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
       const user = new User({
-        email: maskData.maskEmail(req.body.email),
+        email: maskData.maskEmail2(req.body.email),
         password: hash,
       });
       user
@@ -38,7 +39,7 @@ exports.signup = (req, res, next) => {
 
 // Exportation de la fonction login (se connecter)
 exports.login = (req, res, next) => {
-  User.findOne({ email: maskData.maskEmail(req.body.email) })
+  User.findOne({ email: maskData.maskEmail2(req.body.email) })
     .then((user) => {
       if (!user) {
         return res.status(401).json({ error: "Utilisateur non trouvé !" });
