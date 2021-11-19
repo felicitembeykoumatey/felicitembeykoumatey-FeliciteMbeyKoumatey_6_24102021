@@ -1,10 +1,12 @@
+//Importation de cryptage avec bcrypt
 const bcrypt = require("bcrypt");
 //Importation Json Web Token
 const jwt = require("jsonwebtoken");
 
 //Importation maskData
 const maskData = require("maskdata");
-//Importation user model
+
+//mportation user model
 const User = require("../models/userModel");
 
 // Exportation de la fonction sign up (s'inscrire) et ajouter marquage masqué les données
